@@ -19,6 +19,12 @@ def index():
         return redirect(url_for("login"))
     return render_template("index.html")
 
+@app.route("/logout", methods=["GET"])
+def logout():
+    if "id" in session:
+        del session["id"]
+    return redirect(url_for("login"))
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     username_errors = []
@@ -33,7 +39,7 @@ def login():
             username_errors.append("Username is required")
         elif pw is None:
             password_errors.append("Password is required")
-        elif (user, pw) != ("admin", "admin"):
+        elif (user, pw) != ("admin", "monkey"):
             password_errors.append("Incorrect password")
         else:
             session["id"] = "admin"
