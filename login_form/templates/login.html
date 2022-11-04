@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Recitation 10</title>
+        <link rel="stylesheet" href="/static/bulma.min.css">
+        <script src="https://kit.fontawesome.com/2bd72336da.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!-- From https://codepen.io/stevehalford/pen/YeYEOR -->
+        <section class="hero is-primary is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                <form action="/login" method="POST" class="box">
+                    <div class="field">
+                    <label for="" class="label">Username</label>
+                    <div class="control has-icons-left">
+                        <input type="username" name="username" placeholder="username" class="input" value="{{ username }}" required>
+                        <span class="icon is-small is-left">
+                        <i class="fa fa-user"></i>
+                        </span>
+                        {% for error in username_errors %}
+                        <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    </div>
+                    <div class="field">
+                    <label for="" class="label">Password</label>
+                    <div class="control has-icons-left">
+                        <input type="password" name="password" placeholder="*******" class="input" required>
+                        <span class="icon is-small is-left">
+                        <i class="fa fa-lock"></i>
+                        </span>
+                        {% for error in password_errors %}
+                        <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    </div>
+                    <div class="field">
+                    <button class="button is-success">
+                        Login
+                    </button>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+    </body>
+</html>
